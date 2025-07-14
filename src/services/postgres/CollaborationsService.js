@@ -24,10 +24,10 @@ class CollaborationsService {
 
   async deleteCollaboration(noteId, userId) {
     const query = {
-      text: 'DELETE FROM collaborations WHERE noteid = $1 AND userid = $2',
-      query: [noteId, userId],
+      text: 'DELETE FROM collaborations WHERE noteid = $1 AND userid = $2 RETURNING id',
+      values: [noteId, userId],
     };
-    console.log(noteId);
+
     const result = await this._pool.query(query);
 
     if (!result.rows.length) {

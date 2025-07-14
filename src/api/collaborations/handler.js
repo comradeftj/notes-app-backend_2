@@ -32,9 +32,9 @@ class CollaborationsHandler {
     const { noteId, userId } = request.payload;
 
     await this._notesService.verifyNoteOwner(noteId, credentialId);
-    console.log(userId);
+
     await this._collaborationsService.deleteCollaboration(noteId, userId);
-    console.log(noteId);
+
     return {
       status: 'success',
       message: 'Kolaborasi berhasil dihapus',
