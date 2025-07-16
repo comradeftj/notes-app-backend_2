@@ -12,10 +12,12 @@ class UploadsHandler {
     this._validator.validateImageHeader(data.hapi.headers); // verifies the request header
     const filename = await this._service.writeFile(data, data.hapi);
 
+    // use this when using local stprage:
+    // `http://${process.env.HOST}:${process.env.PORT}/upload/images/${filename}`,
     const response = h.response({
       status: 'success',
       data: {
-        fileLocation: `http://${process.env.HOST}:${process.env.PORT}/upload/images/${filename}`,
+        fileLocation: filename, // using S3 storage
       },
     });
     response.code(201);
