@@ -2,3 +2,4 @@ node_modules
 starter_keypair.pem
 .env
 .prod.env
+src/api/uploads/file
